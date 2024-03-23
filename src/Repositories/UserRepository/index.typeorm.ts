@@ -1,7 +1,8 @@
 import {Response} from "express";
 import {User} from "../../Entities/User";
+import {IUserRepository} from './User.types'
 
-export class UserRepository {
+export class UserRepository implements IUserRepository {
     async createUser(data: typeof User.arguments) {
         await User.insert(data);
     }
@@ -32,14 +33,18 @@ export class UserRepository {
     }
 
     async deleteUser(username: string) {
-        // const user = await UserModel.findOne({
-        //     username,
-        // });
-        //
-        // if (!!user) {
-        //     await UserModel.findByIdAndDelete(user._id);
-        //     return true;
-        // }
+        const user = await User.findOne({
+            where: {
+                username,
+            }
+        });
+
+        if (!!user) {
+            await User.findOneBy({
+                _id: user._id,
+            });
+            return true;
+        }
 
         return false;
     }
