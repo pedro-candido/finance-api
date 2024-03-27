@@ -1,6 +1,5 @@
 import {IDayCostRepository} from "./Costs.types";
 import {DayCost} from '../../Entities/Costs'
-import {User} from "../../Entities/User";
 import {Response} from "express";
 
 export class CostsRepository implements IDayCostRepository {
@@ -14,7 +13,7 @@ export class CostsRepository implements IDayCostRepository {
         return {success: true, message: "Costs listed", dayCost};
     }
 
-    async update(_id: number, data: User, res: Response) {
+    async update(_id: number, data: DayCost, res: Response) {
         const dayFound = await DayCost.findOne({
             where: {
                 _id,

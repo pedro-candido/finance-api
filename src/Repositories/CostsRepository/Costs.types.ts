@@ -1,4 +1,5 @@
 import {DayCost} from "../../Entities/Costs";
+import {Response} from "express";
 
 export interface IDayCostRepository {
     registerDay(data: typeof DayCost.arguments): void;
@@ -9,5 +10,5 @@ export interface IDayCostRepository {
         dayCost: DayCost[];
     }>;
 
-    update(_id: number, data: DayCost): void;
+    update(_id: number, data: DayCost, res: Response): void;
 }
