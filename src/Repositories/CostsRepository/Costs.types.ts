@@ -10,5 +10,5 @@ export interface IDayCostRepository {
         dayCost: DayCost[];
     }>;
 
-    update(_id: number, data: DayCost, res: Response): void;
+    update(key: string, value: string, data: DayCost, res: Response): void;
 }

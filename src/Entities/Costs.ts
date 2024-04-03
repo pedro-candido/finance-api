@@ -12,8 +12,5 @@ export class DayCost extends BaseEntity {
     type: String
 
     @Column()
-    limit: number
-
-    @Column()
     day: Date
 }
