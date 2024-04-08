@@ -21,9 +21,9 @@ export class CostsController {
         const {key, value} = req.params;
         const {costs} = req.body;
 
-        const content = repository.update(key, value, costs, res);
+        const content = await repository.update(key, value, costs);
 
-        return res.json(content);
+        if (content?.success) return res.json(content);
     }
 
     async create(req, res) {
@@ -37,7 +37,7 @@ export class CostsController {
     async delete(req, res) {
         const {_id} = req.params;
 
-        const content = repository.delete(_id, res);
+        const content = await repository.delete(_id);
 
         return res.json(content);
     }

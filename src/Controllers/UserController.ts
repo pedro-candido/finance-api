@@ -14,14 +14,10 @@ export class UserController {
             req.body.phone
         );
 
-        const user = await repository.updateUser(
-            req.params.username,
-            {
-                ...req.body,
-                phone: phoneFormatted,
-            },
-            res
-        );
+        const user = await repository.updateUser(req.params.username, {
+          ...req.body,
+          phone: phoneFormatted,
+        });
 
         return res.json(user);
     }
